@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<p> Add new {{ model_name }}:</p>
+<form method="POST">{% csrf_token %}
+	{{ form }}
+	<input type="Submit" name="Submit" value="submit">
+</form>
+{% endblock %}

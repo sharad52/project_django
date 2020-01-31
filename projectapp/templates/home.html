@@ -1,0 +1,76 @@
+	{% extends 'base.html' %}
+
+	{% block content %}
+	<!--navbar starts from here 
+	 <div class="menu-bar">
+        <ul>
+            <li class="active"></i><a href="/dashboard"><i class="fa fa-tachometer"></i>Dashboard</a></li>
+            <li><a href=""><i class="fa fa-home"></i>Home</a></li>
+            <li><a href="/services"><i class="fa fa-globe"></i>Services</a>
+                <div class="sub-menu-1">
+                    <ul>
+                        <li><a href="#">Hardware</a></li>
+                        <li><a href="#">Equipments</a></li>
+                        <li><a href="#">Paints</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li><a href="#"><i class="fa fa-usd"></i>Pricing</a></li>
+            <li><a href="/assets"><i class="fa fa-cog"></i>Add Assets</a></li>
+        </ul> 
+    </div>
+
+
+
+	navbar end here -->
+	<div class="container mt-2">
+		{% if request.user.is_active %}
+			<P>Welcome {{ request.user }}</P>
+		{% endif %}
+		<p><h1>Random meme Pages nowdays</h1><small>world war III is here</small></p>
+		<h2>Author</h2>
+		<p>Name:{{ context.name }}</p>
+		<p>Age:{{ context.age }}</p>
+		<p>Address:{{ context.address }}</p>
+
+
+		<h2>Most Popular Books</h2>
+		<a href="{% url 'baseapp:add_book' %}"><button class="btn btn-info">Add New Book</button><button class="btn btn-success">+</button></a>
+			<ul>
+				{% for book in booklist %}
+				<li>Name: {{book.title}} </li>
+				<li>Author: {{book.author}} </li>
+				<li>Price: {{book.price}} </li>
+				<li>Published_by: {{book.published_by}}</li>
+				<li><a href="{% url 'baseapp:edit_book' book.id %}">Edit</a></li><br>
+				{% endfor %}
+			</ul>
+
+		<h2>Some Popular Publication </h2>
+		<a href="{% url 'baseapp:add_publication' %}"><button class="btn btn-primary">Add new Publication</button></a>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Address</th>
+						<th>Contact</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for publication in publicationlist %}
+						<tr>
+							<td>{{publication.name}}</td>
+							<td>{{publication.address}}</td>
+							<td>{{publication.contact}}</td>
+							<td><a href="{% url 'baseapp:edit_publication' publication.id %}">Edit</a></td><br>
+						</tr>
+					{% endfor %}	
+				</tbody>
+				
+				
+			</table>
+	
+	</div>
+	
+	{% endblock %}

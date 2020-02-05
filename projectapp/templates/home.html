@@ -41,6 +41,14 @@
 				<li>Name: {{book.title}} </li>
 				<li>Author: {{book.author}} </li>
 				<li>Price: {{book.price}} </li>
+				<li>Image:
+					{% if book.image %}
+						<img width="80" height="80" alt="Image not found" src="{{book.image.url}}">
+					{% else %}
+						Image not uploaded 
+					{% endif %}
+					</li>
+					
 				<li>Published_by: {{book.published_by}}</li>
 				<li><a href="{% url 'baseapp:edit_book' book.id %}">Edit</a></li><br>
 				{% endfor %}

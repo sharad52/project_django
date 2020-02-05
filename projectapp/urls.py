@@ -1,12 +1,12 @@
 from django.urls import path
-from .views import home_view,add_publication,add_book,edit_book,edit_publication
+from .views import HomeView,add_publication,add_book,edit_book,edit_publication
 
 
 app_name='baseapp'
 
 
 urlpatterns=[
-	path('',home_view,name='home'), 
+	path('',HomeView.as_view(),name='home'), 
 	path('addpublication/',add_publication,name='add_publication'),
 	path('addbook/',add_book,name='add_book'),
 	path('editbook/<int:book_id>',edit_book,name='edit_book'),

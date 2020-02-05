@@ -17,7 +17,7 @@ class hello(admin.ModelAdmin):
 
 @admin.register(Publication)
 class pubadmin(admin.ModelAdmin):
-	list_display=('name','address','active',)
+	list_display=('name','address','active','slug',)
 	search_fields=('name','address')
 	list_editable=('active',)
 
